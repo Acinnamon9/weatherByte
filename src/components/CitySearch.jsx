@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+
 const CitySearch = ({ cities, setCity }) => {
   const [inputValue, setInputValue] = useState("");
+
   const handleChange = (e) => {
-    setCity(e.target.value);
+    setInputValue(e.target.value); // Update inputValue state
   };
 
   const handleKeyDown = (e) => {
-    if ((e.key === "Enter")) {
-      setCity(inputValue);
+    if (e.key === "Enter") {
+      setCity(inputValue); // Set city when 'Enter' is pressed
       console.log("City selected:", inputValue);
     }
   };
@@ -19,9 +21,9 @@ const CitySearch = ({ cities, setCity }) => {
         id="city"
         name="city"
         placeholder="Start typing..."
-        value={inputValue}
+        value={inputValue} // Use inputValue here to bind the input field
         onChange={handleChange}
-        onkeydown={handleKeyDown}
+        onKeyDown={handleKeyDown} // Correct event name
       />
       <datalist id="cities">
         {cities.map((city) => (
